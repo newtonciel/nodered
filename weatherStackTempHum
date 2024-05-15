@@ -1,0 +1,16 @@
+ // Récupérer la valeur de payload.sunrise
+var sunriseInSeconds = msg.payload;
+
+// Convertir les secondes en temps (hh:mm)
+var date = new Date(sunriseInSeconds * 1000); // Convertir en millisecondes
+var heures = date.getHours().toString().padStart(2, '0'); // Récupérer les heures avec padding
+var minutes = date.getMinutes().toString().padStart(2, '0'); // Récupérer les minutes avec padding
+
+// Formater le résultat
+var heureMinute = heures + ":" + minutes;
+
+// Ajouter le résultat dans le payload
+msg.payload = heureMinute;
+
+// Renvoyer le message
+return msg;
